@@ -21,7 +21,11 @@
                             <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
                         </div>
                         <div class="col-6">
-                            <a class="float-right" href="http://">Delete</a>
+                            <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                                @csrf
+                                {{ method_field('DELETE')}}
+                                <button class="button button--danger" onclick="return confirm('Are u sure?')">Delete post</button>
+                            </form>
                         </div>
                     </div>
                     @endcan

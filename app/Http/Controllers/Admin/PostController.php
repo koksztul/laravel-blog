@@ -86,7 +86,7 @@ class PostController extends Controller
         $data = $request->all();
         $post->update($data);
 
-        return back();
+        return back()->with('message', 'The Post has been updated');
     }
 
     /**
@@ -97,6 +97,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return back()->with('message', 'The Post has been deleted');
     }
 }

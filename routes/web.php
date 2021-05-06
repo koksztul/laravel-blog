@@ -21,6 +21,6 @@ Route::post('/comment/create', [App\Http\Controllers\CommentController::class, '
 
 Route::get('admin/post/create', 'App\Http\Controllers\Admin\PostController@create')->name('admin.post.create');
 Route::post('admin/post/create', 'App\Http\Controllers\Admin\PostController@store');
-
 Route::get('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@edit')->name('admin.post.edit');
-Route::post('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@update');
+Route::put('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@update');
+Route::delete('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@destroy')->name('admin.post.delete');

@@ -7,6 +7,7 @@
         <h1>Edit Post</h1>
         <form method="POST" action="{{ route('admin.post.edit', $post->id) }}">
             @csrf
+            {{ method_field('PUT')}}
                 <label>Title:</label>
                 <input type="text" class="form-control form-control-lg" name="title" placeholder="Example Title" value="{{ $post->title }}">
                 <label>date:</label>
