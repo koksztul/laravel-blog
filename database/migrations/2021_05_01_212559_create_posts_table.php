@@ -19,8 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique();
             $table->string('slug');
             $table->text('content');
-            $table->boolean('published');
-            $table->boolean('premium');
+            $table->boolean('published')->default(0);
+            $table->boolean('premium')->default(0);
             $table->timestamp('date');
             $table->string('image')->nullable();
             $table->timestamps();

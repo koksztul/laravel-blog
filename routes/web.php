@@ -19,4 +19,8 @@ Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
 Route::get('/post/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.single');
 Route::post('/comment/create', [App\Http\Controllers\CommentController::class, 'store'])->name('comment.create');
 
-Route::get('admin/post/create', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('admin.post.create');
+Route::get('admin/post/create', 'App\Http\Controllers\Admin\PostController@create')->name('admin.post.create');
+Route::post('admin/post/create', 'App\Http\Controllers\Admin\PostController@store');
+
+Route::get('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@edit')->name('admin.post.edit');
+Route::post('admin/post/{id}', 'App\Http\Controllers\Admin\PostController@update');

@@ -10,6 +10,10 @@ class Post extends Model
 {
     protected $fillable = ['title', 'user_id', 'content', 'date', 'image', 'published', 'premium'];
     protected $dates = ['date'];
+    protected $casts = [
+        'premium' => 'boolean',
+        'published' => 'boolean',
+    ];
 
     use HasFactory;
 
@@ -25,12 +29,14 @@ class Post extends Model
     public function scopePublished($query)
     {
         $user = auth()->user();
-        if ($user) {
-            return $query->where('published', 1);
+        if ($user && $user->isAdmin()) {
+            return $query;
         }
         if (!$user) {
             return $query->where('premium', 0)->where('published', 1);
         }
+        return $query->where('published', 1);
+
     }
     public function getExcerptContentAttribute()
     {

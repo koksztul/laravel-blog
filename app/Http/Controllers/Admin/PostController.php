@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -34,12 +37,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $post = Post::create($data);
+
+        return redirect(route('posts.single', $post->slug))->with('message', 'Post has been created!');
     }
 
     /**
@@ -61,19 +68,25 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UpdatePostRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $data = $request->all();
+        $post->update($data);
+
+        return back();
     }
 
     /**

@@ -48,7 +48,7 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             @can('manage-posts')
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('admin.create.post') }}">Create <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('admin.post.create') }}">Create <span class="sr-only">(current)</span></a>
             </li>
             @endcan
             <li class="nav-item active">
