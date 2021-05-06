@@ -39,13 +39,18 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a class="navbar-brand" href="{{ url('/') }}">Home</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            @can('manage-posts')
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.create.post') }}">Create <span class="sr-only">(current)</span></a>
+            </li>
+            @endcan
             <li class="nav-item active">
               <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
             </li>
@@ -56,7 +61,7 @@
         </form>
           <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('login')}}">Login <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('login')}}">Login/Register <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         </div>

@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 ->state(new Sequence([
                     'name' => 'admin',
                     'email' => 'admin@o2.pl',
+                    'type' => 'admin',
                     'password' => bcrypt('admin')
                 ]))
                 ->create();
