@@ -60,9 +60,15 @@
             <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
         </form>
           <ul class="navbar-nav mt-2 mt-lg-0">
+            @auth
+            <li class="nav-item active">
+                <a class="nav-link" href="#logout">Logout <span class="sr-only">(current)</span></a>
+            </li>   
+            @else
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('login')}}">Login/Register <span class="sr-only">(current)</span></a>
             </li>
+            @endauth
         </ul>
         </div>
       </nav>
@@ -226,7 +232,19 @@
                 });
         });
     </script>
+    @auth
+    <form id="logout-form" method="POST" action="{{ route('logout') }}">
+        @csrf
+    </form>
 
+    <script>
+        document.querySelector("a[href='#logout']").addEventListener("click", function(e) {
+            e.preventDefault();
+
+            document.querySelector("#logout-form").submit();
+        }, false);
+    </script>
+    @endauth
 </body>
 
 </html>

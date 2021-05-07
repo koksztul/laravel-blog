@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::get('/logout', 'HomeController@logout');
 
 Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
 

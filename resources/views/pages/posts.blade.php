@@ -16,18 +16,7 @@
                         <a href="{{ route('posts.single', $post->slug) }}" class="btn btn-secondary">Details</a>
                     </div>
                     @can('manage-posts')
-                    <div class="row">
-                        <div class="col-6">
-                            <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
-                        </div>
-                        <div class="col-6">
-                            <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
-                                @csrf
-                                {{ method_field('DELETE')}}
-                                <button class="button button--danger" onclick="return confirm('Are u sure?')">Delete post</button>
-                            </form>
-                        </div>
-                    </div>
+                    <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
                     @endcan
                 </div>
             </div>

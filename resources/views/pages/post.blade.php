@@ -8,7 +8,7 @@
             <div class="image d-flex justify-content-center">
                 <img src="{{ asset('img/tm-img-1.jpg') }}" class="img-fluid" />
             </div>
-            <h2>{{ $post->title }}</h2>
+            <h2>{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!} {{ $post->title }}</h2>
             <p> {{ $post->content }}.</p>
         </div>
     </div>

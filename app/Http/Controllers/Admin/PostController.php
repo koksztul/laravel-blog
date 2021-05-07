@@ -86,7 +86,7 @@ class PostController extends Controller
         $data = $request->all();
         $post->update($data);
 
-        return back()->with('message', 'The Post has been updated');
+        return redirect(route('posts.single', $post->slug));
     }
 
     /**
@@ -100,6 +100,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
 
-        return back()->with('message', 'The Post has been deleted');
+        return redirect(url('/'));
     }
 }
