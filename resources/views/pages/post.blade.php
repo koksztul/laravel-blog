@@ -10,6 +10,14 @@
                     <img src="{{ $post->photo }}" class="img-fluid" />
                 </div>
             </div>
+            <div class="row">
+                <div class="col-6">
+                    <p class="blockquote-footer">{{ $post->user->name }}</p>
+                </div>
+                <div class="col-3 offset-3">
+                    <p><small>{{ $post->date->diffForHumans()}}</small></p>
+                </div>
+            </div>
             <h2>{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!} {{ $post->title }}</h2>
             <p> {{ $post->content }}.</p>
             @can('manage-posts')

@@ -10,8 +10,16 @@
                     <img src="{{ $post->photo }}" class="img-fluid" />
                 </div>
                 <div class="tm-box-5 p-3">
-                    <h2>{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!}  {{ $post->excerptTitle }}</h2>
-                    <p class> {{ $post->excerptContent }}.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="blockquote-footer">{{ $post->user->name }}</p>
+                        </div>
+                        <div class="col-3 offset-3">
+                            <p><small>{{ $post->date->diffForHumans()}}</small></p>
+                        </div>
+                    </div>
+                    <h2 class="text-truncate">{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!}  {{ $post->excerptTitle }}</h2>
+                    <p class="text-truncate"> {{ $post->excerptContent }}.</p>
                     <div class="text-center">
                         <a href="{{ route('posts.single', $post->slug) }}" class="btn btn-secondary">Details</a>
                     </div>
