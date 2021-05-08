@@ -6,10 +6,15 @@
     <div class="col-8">
         <div class="tm-box-3">
             <div class="image d-flex justify-content-center">
-                <img src="{{ asset('img/tm-img-1.jpg') }}" class="img-fluid" />
+                <div class="image">
+                    <img src="{{ $post->photo }}" class="img-fluid" />
+                </div>
             </div>
             <h2>{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!} {{ $post->title }}</h2>
             <p> {{ $post->content }}.</p>
+            @can('manage-posts')
+                <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
+            @endcan
         </div>
     </div>
 </div>

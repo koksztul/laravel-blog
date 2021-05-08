@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -44,6 +45,10 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
+        if (isset($data['image'])) {
+            $path = $request->file('image')->store('photos');
+            $data['image'] = $path;
+        }
         $post = Post::create($data);
 
         return redirect(route('posts.single', $post->slug))->with('message', 'Post has been created!');
@@ -83,10 +88,18 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
+        $oldImage = $post->image;
         $data = $request->all();
+        if (isset($data['image'])) {
+            $path = $request->file('image')->store('photos');
+            $data['image'] = $path;
+        }
         $post->update($data);
+        if (isset($data['image'])) {
+            Storage::delete($oldImage);
+        }
 
-        return redirect(route('posts.single', $post->slug));
+        return redirect(route('posts.single', $post->slug))->with('message', 'Post has beed edited');
     }
 
     /**
@@ -99,7 +112,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-
-        return redirect(url('/'));
+        Storage::delete($post->image);
+        return redirect(url('/'))->with('message', 'Post has been deleted');
     }
 }

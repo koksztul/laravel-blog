@@ -29,6 +29,7 @@ class StorePostRequest extends FormRequest
             'date' => 'required|date',
             'premium' => 'boolean',
             'published' => 'boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

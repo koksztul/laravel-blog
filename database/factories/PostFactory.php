@@ -27,7 +27,8 @@ class PostFactory extends Factory
             'content' => $this->faker->paragraph(20),
             'published' => rand(0, 1),
             'premium' => rand(0, 1),
-            'date' => now()
+            'date' => now(),
+            'image' => $this->faker->imageUrl(1200, 800)
         ];
     }
 }

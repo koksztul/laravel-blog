@@ -5,7 +5,7 @@
 <div class="row d-flex justify-content-center">
     <div class="col-md-8">
         <h1 class="text-center">Create Post</h1>
-        <form method="POST" action="{{ route('admin.post.create') }}">
+        <form method="POST" action="{{ route('admin.post.create') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label>Title:</label>
@@ -21,11 +21,17 @@
                 </div>
                 <div class="col-3">
                     <label>published</label>
-                    <input type="checkbox" name="published" value="1">      
+                    <input type="checkbox" name="published" value="1">             
                 </div>
             </div>
+            <div class="custom-file col-6">
+                <label class="custom-file-label">Choose post image</label>
+                <input type="file" class="custom-file-input" name="image">
+            </div>
+            <div class="form-group">
                 <label>Text:</label>
-                <textarea class="form-control form-control" name="content" rows="4">{{ old('content') }}</textarea>
+                <textarea class="form-control" name="content" rows="4">{{ old('content') }}</textarea>
+            </div>     
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -53,5 +54,9 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function getPhotoAttribute()
+    {
+        return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
     }
 }

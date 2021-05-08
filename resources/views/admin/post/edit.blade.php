@@ -5,7 +5,7 @@
 <div class="row d-flex justify-content-center">
     <div class="col-md-8">
         <h1 class="text-center">Edit Post</h1>
-        <form method="POST" action="{{ route('admin.post.edit', $post->id) }}">
+        <form method="POST" action="{{ route('admin.post.edit', $post->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT') 
                 <label>Title:</label>
@@ -23,9 +23,18 @@
                         <input type="checkbox" name="published" value="1" {{ $post->published ? ' checked' : ''}}><br>
                     </div>
                 </div>
-                <label>Text:</label>
-                <textarea class="form-control form-control" name="content" rows="4">{{ $post->content }}</textarea>
-                <div class="row">
+                <div class="image">
+                    <img src="{{ $post->photo }}" class="img-fluid" />
+                </div>
+                <div class="custom-file col-6">
+                    <label class="custom-file-label">Choose post image</label>
+                    <input type="file" class="custom-file-input" name="image">
+                </div>
+                <div class="form-group">
+                    <label>Text:</label>
+                    <textarea class="form-control form-control" name="content" rows="4">{{ $post->content }}</textarea>
+                </div>
+                    <div class="row">
                     <div class="col-6">
                          <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
