@@ -34,6 +34,10 @@
                     <label>Text:</label>
                     <textarea class="form-control form-control" name="content" rows="4">{{ $post->content }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label>Tags:</label>
+                    <input type="text" class="form-control" name="tags" placeholder="Example tags" value="{{ $post->tags->implode('name', ' ') }}">
+                </div> 
                     <div class="row">
                     <div class="col-6">
                          <button type="submit" class="btn btn-primary">Submit</button>

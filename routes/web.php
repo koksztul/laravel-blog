@@ -19,6 +19,7 @@ Route::get('/', [App\Http\Controllers\PostController::class, 'index']);
 
 Route::get('/post/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.single');
 Route::post('/comment/create', [App\Http\Controllers\CommentController::class, 'store'])->name('comment.create');
+Route::get('tag/{slug}', 'App\Http\Controllers\TagController@index')->name('posts.tag');
 
 Route::get('admin/post/create', 'App\Http\Controllers\Admin\PostController@create')->name('admin.post.create');
 Route::post('admin/post/create', 'App\Http\Controllers\Admin\PostController@store');

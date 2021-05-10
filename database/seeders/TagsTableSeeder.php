@@ -19,7 +19,7 @@ class TagsTableSeeder extends Seeder
 
         \App\Models\Post::all()->each(function ($post) use ($tags) {
             $post->tags()->sync(
-                $tags->random(rand(1, 5))->pluck('id')->toArray()
+                $tags->random(rand(1, 6))->pluck('id')->toArray()
             );
         });
     }

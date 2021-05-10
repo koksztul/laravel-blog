@@ -31,7 +31,11 @@
             <div class="form-group">
                 <label>Text:</label>
                 <textarea class="form-control" name="content" rows="4">{{ old('content') }}</textarea>
-            </div>     
+            </div> 
+            <div class="form-group">
+                <label>Tags:</label>
+                <input type="text" class="form-control" name="tags" placeholder="Example tags" value="{{ old('tags') }}">
+            </div>    
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

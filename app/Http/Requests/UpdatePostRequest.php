@@ -29,6 +29,7 @@ class UpdatePostRequest extends FormRequest
             'content' => 'required',
             'date' => 'required|date',
             'premium' => 'boolean',
+            'tags' => 'nullable',
             'published' => 'boolean',
         ];
     }

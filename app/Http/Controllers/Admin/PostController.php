@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Services\TagsParsingService;
 
 class PostController extends Controller
 {
@@ -51,6 +52,10 @@ class PostController extends Controller
         }
         $post = Post::create($data);
 
+        if (isset($data['tags'])) {
+            $tags = TagsParsingService::parse($data['tags']);
+            $post->tags()->sync($tags);
+        }
         return redirect(route('posts.single', $post->slug))->with('message', 'Post has been created!');
     }
 
@@ -98,6 +103,9 @@ class PostController extends Controller
         if (isset($data['image'])) {
             Storage::delete($oldImage);
         }
+
+        $tags = TagsParsingService::parse($data['tags']);
+        $post->tags()->sync($tags);
 
         return redirect(route('posts.single', $post->slug))->with('message', 'Post has beed edited');
     }

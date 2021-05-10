@@ -20,6 +20,13 @@
             </div>
             <h2>{!! $post->premium ? '[Prem] ' : '' !!} {!! $post->published ? '' : '[unPub]' !!} {{ $post->title }}</h2>
             <p> {{ $post->content }}.</p>
+            @if($post->tags->count() > 0)
+                <div class="form-inline p-2">
+                    @foreach ($post->tags as $tag)
+                        <a class="text-light p-1 m-1 bg-info rounded-pill" href="http://">{{ $tag->slug }}</a>
+                    @endforeach
+                </div>
+            @endif
             @can('manage-posts')
                 <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
             @endcan
