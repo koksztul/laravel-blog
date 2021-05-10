@@ -23,6 +23,11 @@
                     <div class="text-center">
                         <a href="{{ route('posts.single', $post->slug) }}" class="btn btn-secondary">Details</a>
                     </div>
+                    <div class="form-inline p-2">
+                    @foreach ($post->tags as $tag)
+                        <a class="text-light p-1 m-1 bg-info rounded-pill" href="http://">{{ $tag->name }}</a>
+                    @endforeach
+                    </div>
                     @can('manage-posts')
                         <a href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
                     @endcan
