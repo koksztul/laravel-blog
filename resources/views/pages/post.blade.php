@@ -36,10 +36,13 @@
 <div class="container mt-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            <a rel="" href="{{asset('https://bbbootstrap.com/snippets/bootstrap-comments-list-font-awesome-icons-and-toggle-button-91650380')}}" target="_parent" class="">Bootstrap 5 comments list</a>
-            <div class="headings d-flex justify-content-between align-items-center mb-3">
+            <div class="row">
+                <a rel="" href="{{asset('https://bbbootstrap.com/snippets/bootstrap-comments-list-font-awesome-icons-and-toggle-button-91650380')}}" target="_parent" class="">Bootstrap 5 comments list</a>    
+            </div>
+                <div class="row">  
                 @if ($post->comments->count() > 0)
-                    <h5>Comments({{ $post->comments->count() }})</h5>
+                    <div class="d-inline mr-1 h4">Comments</div>
+                    <div id="com_count" class="d-inline h4">{{ $post->comments->count() }}</div>
                 @else
                     <h5>No comments yet</h5>
                 @endif
@@ -83,7 +86,6 @@
 @section('javascript')
 $(function() {
     $('.delete').click(function() {
-        
         Swal.fire({
             title: 'Are you sure that you want to remove this comment?',
             icon: 'warning',
@@ -91,6 +93,7 @@ $(function() {
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'No, keep it'
         }).then((result) => {
+            var $this = $(this);
             if (result.value) {
                 $.ajax({
                     method: "DELETE",
@@ -100,9 +103,13 @@ $(function() {
                         }
                 })
                 .done(function( response ) {
-                    console.log($(this));
+                    $this.closest(".card").fadeOut(500);
+                    var count = parseInt($("#com_count").text());
+                    count--;
+                    $("#com_count").text(count).fadeOut(500);
                 })
                 .fail(function( response ) {
+                    console.log($(this));
                     Swal.fire('Oops...', 'Something went wrong!', 'error');
                 });
             }
