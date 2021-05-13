@@ -53,11 +53,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="user d-flex flex-row align-items-center"> <img src="{{asset('dist/img/user2-160x160.jpg')}}" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">{{ $comment->user->name }}</small> <small class="font-weight-bold">{{$comment->text}}</small></span></div>
                         </div>
-                        <div class="action d-flex justify-content-between mt-2 align-items-center">
-                            <!--
-                            <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
-                            -->
+                        @can('manage-posts')
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">    
+                            <button class="btn btn-danger btn-sm delete" data-url="{{ route('admin.comment.delete', $comment->id) }}">Remove</button>
                         </div>
+                        @endcan
                     </div>
                 @endforeach
             @endif
@@ -78,4 +78,35 @@
     </div>
 
 </div>
+@endsection
+
+@section('javascript')
+$(function() {
+    $('.delete').click(function() {
+        
+        Swal.fire({
+            title: 'Are you sure that you want to remove this comment?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    method: "DELETE",
+                    url: $(this).data("url"),
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                        }
+                })
+                .done(function( response ) {
+                    console.log($(this));
+                })
+                .fail(function( response ) {
+                    Swal.fire('Oops...', 'Something went wrong!', 'error');
+                });
+            }
+        })
+    });         
+});   
 @endsection

@@ -137,7 +137,11 @@
     </div>
         
     <script src="{{ mix('/js/app.js') }}"></script>
+  
+    <script type="text/javascript">
 
+        @yield('javascript');
+    </script>
     <!-- load JS files -->
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
