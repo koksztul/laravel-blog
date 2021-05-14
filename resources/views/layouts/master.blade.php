@@ -137,7 +137,7 @@
     <script type="text/javascript">
         @yield('javascript');
     </script>
-    
+    @yield('js-files');
     <!-- https://getbootstrap.com/ -->
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
     

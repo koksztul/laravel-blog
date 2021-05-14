@@ -59,6 +59,7 @@
                         @can('manage-posts')
                         <div class="action d-flex justify-content-between mt-2 align-items-center">    
                             <button class="btn btn-danger btn-sm delete" data-url="{{ route('admin.comment.delete', $comment->id) }}">Remove</button>
+                            @csrf
                         </div>
                         @endcan
                     </div>
@@ -84,36 +85,8 @@
 @endsection
 
 @section('javascript')
-$(function() {
-    $('.delete').click(function() {
-        Swal.fire({
-            title: 'Are you sure that you want to remove this comment?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, keep it'
-        }).then((result) => {
-            var $this = $(this);
-            if (result.value) {
-                $.ajax({
-                    method: "DELETE",
-                    url: $(this).data("url"),
-                    data: {
-                        "_token": "{{ csrf_token() }}"
-                        }
-                })
-                .done(function( response ) {
-                    $this.closest(".card").fadeOut(500);
-                    var count = parseInt($("#com_count").text());
-                    count--;
-                    $("#com_count").text(count).fadeOut(500);
-                })
-                .fail(function( response ) {
-                    console.log($(this));
-                    Swal.fire('Oops...', 'Something went wrong!', 'error');
-                });
-            }
-        })
-    });         
-});   
+
+@endsection
+@section('js-files')
+    <script src="{{ mix('/js/delete.js') }}"></script>
 @endsection
