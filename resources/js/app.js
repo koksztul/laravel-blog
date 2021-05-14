@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 require('./message');
+require('./popper.min');
+require('./jquery-1.11.3.min');
 
 window.Vue = require('vue').default;
 

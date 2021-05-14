@@ -44,7 +44,7 @@
                     <div class="d-inline mr-1 h4">Comments</div>
                     <div id="com_count" class="d-inline h4">{{ $post->comments->count() }}</div>
                 @else
-                    <h5>No comments yet</h5>
+                <div class="d-inline mr-1 h4">No comments yet</div>
                 @endif
             </div>
             @if ($post->comments->count() > 0)

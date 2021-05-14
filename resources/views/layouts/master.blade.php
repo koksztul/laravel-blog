@@ -15,13 +15,9 @@
 
     -->
     <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans:300,400') }}">
-    <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/tooplate-style.css') }}">
     <link rel="stylesheet" href="{{ mix('/css/app.css')}} ">
     <!-- tooplate style -->
 
@@ -142,11 +138,6 @@
 
         @yield('javascript');
     </script>
-    <!-- load JS files -->
-    <script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <!-- https://popper.js.org/ -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- https://getbootstrap.com/ -->
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
     <!-- Slick Carousel -->
