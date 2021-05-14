@@ -89,19 +89,19 @@
                 <div class="tm-img-slider">
                     <div class="tm-img-slider-item" href="{{ asset('img/gallery-img-01.jpg') }}">
                         <p class="tm-slider-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <img src="{{ asset('img/gallery-img-01.jpg') }}" alt="Image" class="tm-slider-img">
+                        <img src="{{ asset('images/gallery-img-01.jpg') }}" alt="Image" class="tm-slider-img">
                     </div>
                     <div class="tm-img-slider-item" href="{{ asset('img/gallery-img-02.jpg') }}">
                         <p class="tm-slider-caption">Curabitur justo nisl, elementum a mollis sed.</p>
-                        <img src="{{ asset('img/gallery-img-02.jpg') }}" alt="Image" class="tm-slider-img">
+                        <img src="{{ asset('images/gallery-img-02.jpg') }}" alt="Image" class="tm-slider-img">
                     </div>
                     <div class="tm-img-slider-item" href="{{ asset('img/gallery-img-03.jpg') }}">
                         <p class="tm-slider-caption">Suspendisse sodales elit non metus dictum blandit.</p>
-                        <img src="{{ asset('img/gallery-img-03.jpg') }}" alt="Image" class="tm-slider-img">
+                        <img src="{{ asset('images/gallery-img-03.jpg') }}" alt="Image" class="tm-slider-img">
                     </div>
                     <div class="tm-img-slider-item" href="{{ asset('img/gallery-img-04.jpg') }}">
                         <p class="tm-slider-caption">Aliquam sed molestie tortor, mollis auctor neque.</p>
-                        <img src="{{ asset('img/gallery-img-04.jpg') }}" alt="Image" class="tm-slider-img">
+                        <img src="{{ asset('images/gallery-img-04.jpg') }}" alt="Image" class="tm-slider-img">
                     </div>
                 </div>
             </div>
@@ -133,15 +133,15 @@
     </div>
         
     <script src="{{ mix('/js/app.js') }}"></script>
-  
+    
     <script type="text/javascript">
-
         @yield('javascript');
     </script>
+    
     <!-- https://getbootstrap.com/ -->
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
+    
     <!-- Slick Carousel -->
-
     <script>
         function setCarousel() {
             var slider = $('.tm-img-slider');

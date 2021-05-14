@@ -54,7 +54,7 @@
                             <small>{{ $comment->date->diffForHumans() }}</small>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="user d-flex flex-row align-items-center"> <img src="{{asset('dist/img/user2-160x160.jpg')}}" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">{{ $comment->user->name }}</small> <small class="font-weight-bold">{{$comment->text}}</small></span></div>
+                            <div class="user d-flex flex-row align-items-center"> <img src="{{asset('images/User-Avatar.png')}}" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">{{ $comment->user->name }}</small> <small class="font-weight-bold">{{$comment->text}}</small></span></div>
                         </div>
                         @can('manage-posts')
                         <div class="action d-flex justify-content-between mt-2 align-items-center">    
