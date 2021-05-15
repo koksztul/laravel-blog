@@ -1,19 +1,24 @@
+@extends('layouts.master')
+@section('title', 'Contact')
+    
+@section('content')
 <div class="row">
     <div class="col-lg-7 col-md-7 col-xs-12">
         <div class="contact_message">
-            <form action="" method="post" class="contact-form">
+            <form action="{{ route('contact') }}" method="POST" class="contact-form">
+                @csrf
                 <div class="row mb-2">
                     <div class="form-group col-xl-6">
-                        <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required/>
+                        <input type="text" id="contact_name" name="name" class="form-control" placeholder="Name" required/>
                     </div>
                     <div class="form-group col-xl-6 pl-xl-1">
-                        <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email" required/>
+                        <input type="email" id="contact_email" name="email" class="form-control" placeholder="Email" required/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Message" required></textarea>
+                    <textarea id="contact_message" name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
                 </div>
-                <button type="submit" class="btn  tm-btn-submit float-right btn-big">Send It Now</button>
+                <button type="submit" class="btn btn btn-primary tm-btn-submit float-right btn-big">Send It Now</button>
             </form>
         </div>
     </div>
@@ -30,3 +35,4 @@
         </div>
     </div>
 </div>
+@endsection
