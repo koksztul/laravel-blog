@@ -31,3 +31,5 @@ Route::delete('/admin/comment/{comment}', 'App\Http\Controllers\Admin\CommentCon
 
 Route::get('/contact', 'App\Http\Controllers\ContactController@show')->name('contact');
 Route::post('/contact', 'App\Http\Controllers\ContactController@send');
+
+Route::get('/search/', 'App\Http\Controllers\SearchController@index')->name('search');

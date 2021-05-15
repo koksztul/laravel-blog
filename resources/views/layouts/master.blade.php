@@ -51,15 +51,18 @@
               <a class="nav-link" href="{{ route('contact') }}">Contact <span class="sr-only">(current)</span></a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q" aria-label="Search">
             <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
         </form>
           <ul class="navbar-nav mt-2 mt-lg-0">
             @auth
             <li class="nav-item active">
+                <a class="nav-link text-primary">{{ Auth::user()->name }}</a>
+            </li>  
+            <li class="nav-item active">
                 <a class="nav-link" href="#logout">Logout <span class="sr-only">(current)</span></a>
-            </li>   
+            </li>  
             @else
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('login')}}">Login/Register <span class="sr-only">(current)</span></a>

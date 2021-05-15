@@ -34,10 +34,9 @@ class Post extends Model
             return $query;
         }
         if (!$user) {
-            return $query->where('premium', 0)->where('published', 1);
+            return $query->where('premium', 0)->Where('published', 1);
         }
         return $query->where('published', 1);
-
     }
     public function getExcerptContentAttribute()
     {
