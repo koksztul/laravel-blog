@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserRegistered;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -40,6 +43,12 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function registered(Request $request, $user)
+    {
+        Mail::to($user->email)->send(new UserRegistered($user));
+    }
+
 
     /**
      * Get a validator for an incoming registration request.
