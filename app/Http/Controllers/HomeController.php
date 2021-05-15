@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +11,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    use Auth;
 
     public function __construct()
     {
@@ -32,5 +31,4 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('/login');
     }
-
 }
