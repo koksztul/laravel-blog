@@ -31,6 +31,7 @@ class UpdatePostRequest extends FormRequest
             'premium' => 'boolean',
             'tags' => 'nullable',
             'published' => 'boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

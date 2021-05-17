@@ -30,7 +30,7 @@ class StorePostRequest extends FormRequest
             'premium' => 'boolean',
             'published' => 'boolean',
             'tags' => 'nullable',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

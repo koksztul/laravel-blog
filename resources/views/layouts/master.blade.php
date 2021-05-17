@@ -137,12 +137,14 @@
         
     <script src="{{ mix('/js/app.js') }}"></script>
 
-    @include('partials.message') 
-    
+    @include('partials.message')
+
     <script type="text/javascript">
-        @yield('javascript');
+        @yield('javascript')
     </script>
-    @yield('js-files');
+
+    @yield('js-files')
+
     <!-- https://getbootstrap.com/ -->
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
     

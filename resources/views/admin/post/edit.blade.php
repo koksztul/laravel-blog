@@ -26,9 +26,12 @@
                 <div class="image">
                     <img src="{{ $post->photo }}" class="img-fluid" />
                 </div>
-                <div class="custom-file col-6">
-                    <label class="custom-file-label">Choose post image</label>
-                    <input type="file" class="custom-file-input" name="image">
+                <div class="form-group">
+                    <label class="">Choose post image</label>
+                    <input type="file" class=" @error('content') is-invalid @enderror" name="image">
+                    @error('image')
+                        <div class="invalid-feedback">Image is required</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Text:</label>

@@ -9,10 +9,10 @@
             @csrf
             <div class="form-group">
                 <label>Title:</label>
-                <input type="text" class="form-control" name="title" placeholder="Example Title" value="{{ old('title') }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Example Title" value="{{ old('title') }}">
             </div>
             <label>date:</label>
-            <input type="date" class="form-control" name="date" value="{{ old('date') }}">
+            <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}">
             <label>Visible Options:</label>
             <div class="row">
                 <div class="col-3">
@@ -24,20 +24,27 @@
                     <input type="checkbox" name="published" value="1">             
                 </div>
             </div>
-            <div class="custom-file col-6">
-                <label class="custom-file-label">Choose post image</label>
-                <input type="file" class="custom-file-input" name="image">
-            </div>
             <div class="form-group">
                 <label>Text:</label>
-                <textarea class="form-control" name="content" rows="4">{{ old('content') }}</textarea>
+                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="4">{{ old('content') }}</textarea>
             </div> 
             <div class="form-group">
                 <label>Tags:</label>
                 <input type="text" class="form-control" name="tags" placeholder="Example tags" value="{{ old('tags') }}">
-            </div>    
+            </div>   
+            <div class="form-group">
+                <label class="">Choose post image</label>
+                <input type="file" class=" @error('content') is-invalid @enderror" name="image">
+                @error('image')
+                    <div class="invalid-feedback">Image is required</div>
+                @enderror
+            </div> 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
+@endsection
+
+@section('javascript')
+    $('#message').delay(3500).hide(0) 
 @endsection
