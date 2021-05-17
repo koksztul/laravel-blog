@@ -88,5 +88,5 @@
 
 @endsection
 @section('js-files')
-    <script src="{{ mix('/js/delete.js') }}"></script>
+    <script src="{{ mix('/js/delete-comnt.js') }}"></script>
 @endsection

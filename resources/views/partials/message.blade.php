@@ -7,8 +7,11 @@
     @endforeach
 </div>
 @endif
+
 @if ( Session::has('message') )
-<div class="alert alert-success col-4 offset-4 fixed-top fd-flex form-inline justify-content-center" id="message">
-        <div><strong>Well done!</strong> {{ Session::get('message') }} </div>
-</div>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        Swal.fire('Well Done', ' {{ Session::get('message') }} ' , 'success')
+    });
+</script>
 @endif

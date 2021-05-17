@@ -74,7 +74,7 @@
     
     <section class="row d-flex justify-content-center">
         <div class="col-md-6">
-            @include('partials.message')  
+             
         </div>
     </section>
       
@@ -136,6 +136,8 @@
     </div>
         
     <script src="{{ mix('/js/app.js') }}"></script>
+
+    @include('partials.message') 
     
     <script type="text/javascript">
         @yield('javascript');

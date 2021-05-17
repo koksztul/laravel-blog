@@ -44,12 +44,16 @@
                         </form>
                     </div>
                     <div class="col-6">
-                        <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                        <form id="delete-post-form" action="{{ route('admin.post.delete', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE') 
-                            <button class="btn btn-danger float-right" onclick="return confirm('Are u sure?')">Delete post</button>
+                            <button onclick="return false" class="btn btn-danger float-right delete">Delete post</button>
                         </form>
                     </div>
                 </div>
 </div>
+@endsection
+
+@section('js-files')
+    <script src="{{ mix('/js/delete-post.js') }}"></script>
 @endsection

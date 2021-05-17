@@ -1,0 +1,22 @@
+$(function() {
+    $('.delete').click(function() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this post!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            $('#delete-post-form').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire(
+                'Cancelled',
+                'Your post is safe :)',
+                'error'
+            )
+            }
+        })
+    });         
+});  
