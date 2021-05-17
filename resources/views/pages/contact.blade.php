@@ -4,6 +4,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-7 col-md-7 col-xs-12">
+        <h2 class="text-center">Contact us</h2>
         <div class="contact_message">
             <form action="{{ route('contact') }}" method="POST" class="contact-form">
                 @csrf
@@ -22,10 +23,8 @@
             </form>
         </div>
     </div>
-
     <div class="col-lg-5 col-md-5 col-xs-12 tm-contact-right">
         <div class="tm-address-box">
-            <h2 class="mb-4">Contact Us</h2>
             <p class="mb-5">Integer pretium volutpat tempor. Maecenas condimentum tincidunt leo. Paesent scelerisque erat placerat tempus laoreet. Vivamus pellentesque tempor congue.</p>
             <address>
                 120-240 Proin mauris enim,
