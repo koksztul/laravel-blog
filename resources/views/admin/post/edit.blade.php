@@ -9,9 +9,9 @@
             @csrf
             @method('PUT') 
                 <label>Title:</label>
-                <input type="text" class="form-control form-control-lg" name="title" placeholder="Example Title" value="{{ $post->title }}">
+                <input type="text" class="form-control form-control-lg" name="title" placeholder="Example Title" value="{{ $post->title }}" required>
                 <label>date:</label>
-                <input type="date" class="form-control form-control-sm" name="date" value="{{ $post->date->format('Y-m-d') }}">
+                <input type="date" class="form-control form-control-sm" name="date" value="{{ $post->date->format('Y-m-d') }}" required>
                 <label>Visible Options:</label>
                 <div class="row">
                     <div class="col-3">
@@ -24,18 +24,18 @@
                     </div>
                 </div>
                 <div class="image">
+                    <label for="link">Current post photo: <a href="{{ url($post->photo) }}">{{ url($post->photo) }}</a></label>
                     <img src="{{ $post->photo }}" class="img-fluid" />
                 </div>
                 <div class="form-group">
-                    <label class="">Choose post image</label>
-                    <input type="file" class=" @error('content') is-invalid @enderror" name="image">
+                    <input type="file" class=" @error('image') is-invalid @enderror" name="image">
                     @error('image')
                         <div class="invalid-feedback">Image is required</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Text:</label>
-                    <textarea class="form-control form-control" name="content" rows="4">{{ $post->content }}</textarea>
+                    <textarea class="form-control form-control" name="content" rows="4" required>{{ $post->content }}</textarea>
                 </div>
                 <div class="form-group">
                     <label>Tags:</label>

@@ -9,10 +9,10 @@
             @csrf
             <div class="form-group">
                 <label>Title:</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Example Title" value="{{ old('title') }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Example Title" value="{{ old('title') }}" required>
             </div>
             <label>date:</label>
-            <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}">
+            <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" required>
             <label>Visible Options:</label>
             <div class="row">
                 <div class="col-3">
@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label>Text:</label>
-                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="4">{{ old('content') }}</textarea>
+                <textarea class="form-control @error('content') is-invalid @enderror" name="content" rows="4" required>{{ old('content') }}</textarea>
             </div> 
             <div class="form-group">
                 <label>Tags:</label>
@@ -34,7 +34,7 @@
             </div>   
             <div class="form-group">
                 <label class="">Choose post image</label>
-                <input type="file" class=" @error('content') is-invalid @enderror" name="image">
+                <input type="file" class=" @error('content') is-invalid @enderror" name="image" required>
                 @error('image')
                     <div class="invalid-feedback">Image is required</div>
                 @enderror

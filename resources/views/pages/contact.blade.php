@@ -10,14 +10,14 @@
                 @csrf
                 <div class="row mb-2">
                     <div class="form-group col-xl-6">
-                        <input type="text" id="contact_name" name="name" class="form-control" placeholder="Name" required/>
+                        <input type="text" id="contact_name" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}" required/>
                     </div>
                     <div class="form-group col-xl-6 pl-xl-1">
-                        <input type="email" id="contact_email" name="email" class="form-control" placeholder="Email" required/>
+                        <input type="email" id="contact_email" name="email" class="form-control" value="{{ old('email') }}" placeholder="Email" required/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea id="contact_message" name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+                    <textarea id="contact_message" name="message" class="form-control" rows="6" placeholder="Message" required>{{ old('message') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn btn-primary tm-btn-submit float-right btn-big">Send It Now</button>
             </form>
